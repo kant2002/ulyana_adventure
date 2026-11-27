@@ -11,5 +11,13 @@ const base =
 
 export default defineConfig({
   base,
-  plugins: [svelte()],
+  plugins: [
+    svelte({
+      dynamicCompileOptions({ filename }) {
+        if (filename.replaceAll('\\', '/').endsWith('/TerrainMap.svelte')) {
+          return { customElement: true }
+        }
+      },
+    }),
+  ],
 })
