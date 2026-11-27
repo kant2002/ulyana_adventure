@@ -48,7 +48,10 @@
   globalThis.createStructure = createStructure
 
   if ((globalThis.globalStructures?.length ?? 0) === 0) {
+    createStructure('appletree', 4, 6)
     createStructure('house', 5, 5)
+    createStructure('appletree', 9, 6)
+    
     createStructure('appletree', 13, 7)
     createStructure('appletree', 3, 11)
   }
