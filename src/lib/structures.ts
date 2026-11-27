@@ -120,34 +120,11 @@ export const structureSizes: StructureSize[] = [
   { code: 'workshop-snowy-notiles', width: 4, height: 3 },
 ]
 
-const structureModules = import.meta.glob('../../assets/structures/!(*#*).png', {
+const structureModules = import.meta.glob('../../assets/structures/*.png', {
   eager: true,
   query: '?url',
   import: 'default',
 }) as Record<string, string>
-
-const structureFileNamesWithHash = [
-  'copper wire#e.png',
-  'copper wire#en.png',
-  'copper wire#ens.png',
-  'copper wire#ensw.png',
-  'copper wire#enw.png',
-  'copper wire#es.png',
-  'copper wire#esw.png',
-  'copper wire#ew.png',
-  'copper wire#n.png',
-  'copper wire#ns.png',
-  'copper wire#nsw.png',
-  'copper wire#nw.png',
-  'copper wire#s.png',
-  'copper wire#sw.png',
-  'copper wire#w.png',
-]
-
-const hashStructureModules = structureFileNamesWithHash.map((fileName) => [
-  fileName,
-  `${import.meta.env.BASE_URL}assets/structures/${encodeURIComponent(fileName)}`,
-] as const)
 
 const normalizeCode = (value: string) =>
   value
@@ -163,11 +140,7 @@ export const describeStructures = (): Record<string, StructureDefinition> => {
     const name = fileName.replace(/\.png$/i, '').trim()
     return { name, code: normalizeCode(name), image }
   })
-  const hashFiles = hashStructureModules.map(([fileName, image]) => {
-    const name = fileName.replace(/\.png$/i, '').trim()
-    return { name, code: normalizeCode(name), image }
-  })
-  const files = [...moduleFiles, ...hashFiles]
+  const files = moduleFiles
 
   const definitions: Record<string, StructureDefinition> = {}
 

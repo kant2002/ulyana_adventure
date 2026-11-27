@@ -1,14 +1,14 @@
 import { svelte } from '@sveltejs/vite-plugin-svelte'
 import { defineConfig } from 'vite'
-import { cpSync } from 'node:fs'
 
 const repository = process.env.GITHUB_REPOSITORY?.split('/')[1]
 const base =
-  process.env.GITHUB_ACTIONS === 'true' &&
+  process.env.PAGES_BASE ??
+  (process.env.GITHUB_ACTIONS === 'true' &&
   repository &&
   !repository.endsWith('.github.io')
     ? `/${repository}/`
-    : '/'
+    : '/')
 
 export default defineConfig({
   base,
@@ -29,13 +29,5 @@ export default defineConfig({
         }
       },
     }),
-    {
-      name: 'copy-structure-assets',
-      closeBundle() {
-        cpSync('assets/structures', 'dist/assets/structures', {
-          recursive: true,
-        })
-      },
-    },
   ],
 })
