@@ -1,5 +1,9 @@
 <script lang="ts">
   import { onMount } from 'svelte'
+  import {
+    createStructure,
+    describeStructures,
+  } from './lib/structures'
 
   globalThis.groundMap = [
     'gggggggggggggggg',
@@ -38,6 +42,16 @@
     'gggggggggggggggg',
     'gggggggggggggggg',
   ]
+
+  describeStructures()
+  globalThis.describeStructures = describeStructures
+  globalThis.createStructure = createStructure
+
+  if ((globalThis.globalStructures?.length ?? 0) === 0) {
+    createStructure('house', 5, 5)
+    createStructure('appletree', 13, 7)
+    createStructure('appletree', 3, 11)
+  }
 
   let width = 12
   let height = 7
@@ -122,13 +136,22 @@
     </header>
 
     <div class="map-frame">
-      <terrain-map
-        center-x={cameraX}
-        center-y={cameraY}
-        width={width}
-        height={height}
-        tile-size={tileSize}
-      ></terrain-map>
+      <div class="map-stack">
+        <terrain-map
+          center-x={cameraX}
+          center-y={cameraY}
+          width={width}
+          height={height}
+          tile-size={tileSize}
+        ></terrain-map>
+        <structures-layer
+          center-x={cameraX}
+          center-y={cameraY}
+          width={width}
+          height={height}
+          tile-size={tileSize}
+        ></structures-layer>
+      </div>
     </div>
 
     <footer bind:this={footerElement}>
@@ -192,6 +215,16 @@
     min-height: 0;
     overflow: hidden;
     padding: 12px;
+  }
+
+  .map-stack {
+    position: relative;
+  }
+
+  .map-stack structures-layer {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
   }
 
   footer {

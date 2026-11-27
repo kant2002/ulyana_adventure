@@ -1,5 +1,6 @@
 import { svelte } from '@sveltejs/vite-plugin-svelte'
 import { defineConfig } from 'vite'
+import { cpSync } from 'node:fs'
 
 const repository = process.env.GITHUB_REPOSITORY?.split('/')[1]
 const base =
@@ -14,10 +15,27 @@ export default defineConfig({
   plugins: [
     svelte({
       dynamicCompileOptions({ filename }) {
-        if (filename.replaceAll('\\', '/').endsWith('/TerrainMap.svelte')) {
+        const customElementNames = [
+          '/TerrainMap.svelte',
+          '/Structure.svelte',
+          '/StructuresLayer.svelte',
+        ]
+        if (
+          customElementNames.some((name) =>
+            filename.replaceAll('\\', '/').endsWith(name),
+          )
+        ) {
           return { customElement: true }
         }
       },
     }),
+    {
+      name: 'copy-structure-assets',
+      closeBundle() {
+        cpSync('assets/structures', 'dist/assets/structures', {
+          recursive: true,
+        })
+      },
+    },
   ],
 })
