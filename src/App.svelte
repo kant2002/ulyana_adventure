@@ -45,6 +45,7 @@
     // Windmill and field
     createWindmillAndField(2, 17)
     createStructure('boat', 60, 2)
+    createStructure('boat', 4, 5)
   }
 
   let width = 12
@@ -52,8 +53,8 @@
   let tileSize = 64
   let cameraX = 3
   let cameraY = 3
-  let playerX = 55
-  let playerY = 1
+  let playerX = 5
+  let playerY = 8
   let playerDirection: 'left' | 'right' = 'left'
   let playerWalking = false
   let walkingTimer: ReturnType<typeof setTimeout> | undefined
