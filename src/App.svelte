@@ -115,14 +115,16 @@
       return
     }
 
+    const moved = nextX !== playerX || nextY !== playerY
     if (horizontal !== 0 && nextX !== playerX) {
       playerDirection = horizontal < 0 ? 'left' : 'right'
-      playerWalking = true
+    }
+
+    playerWalking = moved
+    if (moved) {
       walkingTimer = setTimeout(() => {
         playerWalking = false
       }, 400)
-    } else {
-      playerWalking = false
     }
 
     playerX = nextX
