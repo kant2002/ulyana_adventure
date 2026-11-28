@@ -3,6 +3,7 @@
   import {
     createStructure,
     describeStructures,
+    isPositionBlockedByStructure,
   } from './lib/structures'
 
   globalThis.groundMap = [
@@ -134,6 +135,11 @@
     const nextX = clamp(playerX + horizontal, 0, (groundMap[nextY]?.length ?? 1) - 1)
 
     clearTimeout(walkingTimer)
+    if (isPositionBlockedByStructure(nextX, nextY)) {
+      playerWalking = false
+      return
+    }
+
     if (horizontal !== 0 && nextX !== playerX) {
       playerDirection = horizontal < 0 ? 'left' : 'right'
       playerWalking = true
