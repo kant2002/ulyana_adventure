@@ -55,6 +55,17 @@
   globalThis.describeStructures = describeStructures
   globalThis.createStructure = createStructure
 
+  function createWindmillAndField(x: number, y: number) {
+    for (let i = 0; i < 15; i++) {
+      for (let j = 0; j < 11; j++) {
+        if (j < 7 || i != 7) {
+          createStructure('yellowgrass', x + i, y + j)
+        }
+      }
+    }
+    createStructure('windmill', x + 6, y + 3)
+  }
+
   if ((globalThis.globalStructures?.length ?? 0) === 0) {
     createStructure('appletree', 4, 6)
     createStructure('house', 5, 5)
@@ -63,11 +74,12 @@
     createStructure('appletree', 13, 7)
     createStructure('appletree', 3, 11)
     createStructure('anvil', 22, 11)
-    createStructure('yellowgrass', 11, 11)
     createStructure('workshop', 12, 12)
-    createStructure('windmill', 5, 17)
     createStructure('willowcut', 9, 17)
     createStructure('whirlpool', 85, 2)
+    
+    // Windmill and field
+    createWindmillAndField(2, 17)
   }
 
   let width = 12
@@ -76,7 +88,7 @@
   let cameraX = 3
   let cameraY = 3
   let playerX = 3
-  let playerY = 3
+  let playerY = 15
   let playerDirection: 'left' | 'right' = 'left'
   let playerWalking = false
   let walkingTimer: ReturnType<typeof setTimeout> | undefined
