@@ -24,7 +24,7 @@
     createStructure('windmill', x + 6, y + 3)
   }
 
-  function createWorkshop(x, y) {
+  function createWorkshop(x: number, y: number) {
     createStructure('workshop', x, y)
     createStructure('anvil', x + 2, y + 3)
   }
