@@ -19,6 +19,7 @@
   import highlandTile from '../../assets/terrain/highland.png'
   import mountainTile from '../../assets/terrain/mountainfloor.png'
   import oceanTile from '../../assets/terrain/ocean.png'
+  import deepOceanTile from '../../assets/terrain/deepocean.png'
   import pathTile from '../../assets/terrain/path.png'
   import sandTile from '../../assets/terrain/sand.png'
   import snowTile from '../../assets/terrain/snow.png'
@@ -42,6 +43,7 @@
   }
 
   const tilePaths: ReadonlyArray<readonly [string, string]> = [
+    ['d', deepOceanTile],
     ['g', grassTile],
     ['h', highlandTile],
     ['m', mountainTile],

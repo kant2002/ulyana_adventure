@@ -6,15 +6,15 @@
   } from './lib/structures'
 
   globalThis.groundMap = [
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwoooooooooooooooooooooooo',
-    'ggggghhhggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooooooooooo',
-    'ggghhmmhhgggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooooooooooo',
-    'gsspppppssgggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwoooooooooooooooooooooo',
-    'gswwwwwssggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwoooooooooooooooooooooo',
-    'ggwoowwsggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooooooooo',
-    'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooooooo',
-    'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooooo',
-    'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooo',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwoooooooooooooddddddddddd',
+    'ggggghhhggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooddddddddd',
+    'ggghhmmhhgggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooodddddddd',
+    'gsspppppssgggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwoooooooooooooooooddddd',
+    'gswwwwwssggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwoooooooooooooooooooddd',
+    'ggwoowwsggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooooooodd',
+    'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooooood',
+    'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooood',
+    'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooood',
     'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwoooooooooooooo',
     'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooo',
     'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooo',
@@ -66,7 +66,7 @@
     createStructure('workshop', 12, 12)
     createStructure('windmill', 5, 17)
     createStructure('willowcut', 9, 17)
-    createStructure('whirlpool', 40, 4)
+    createStructure('whirlpool', 85, 2)
   }
 
   let width = 12
