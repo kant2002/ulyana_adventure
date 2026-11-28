@@ -6,41 +6,48 @@
   } from './lib/structures'
 
   globalThis.groundMap = [
-    'gggggggggggggggg',
-    'ggggghhhgggggggg',
-    'ggghhmmhhggggggg',
-    'gsspppppssgggggg',
-    'gswwwwwssggggggg',
-    'ggwoowwsgggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
-    'gggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwoooooooooooooooooooooooo',
+    'ggggghhhggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooooooooooo',
+    'ggghhmmhhgggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooooooooooo',
+    'gsspppppssgggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwoooooooooooooooooooooo',
+    'gswwwwwssggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwoooooooooooooooooooooo',
+    'ggwoowwsggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooooooooo',
+    'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooooooo',
+    'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooooo',
+    'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooo',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwoooooooooooooo',
+    'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooo',
+    'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooo',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwoooooo',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwoooo',
+    'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwo',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwww',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwww',
+    'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggww',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
   ]
 
   describeStructures()
@@ -54,6 +61,12 @@
     
     createStructure('appletree', 13, 7)
     createStructure('appletree', 3, 11)
+    createStructure('anvil', 22, 11)
+    createStructure('yellowgrass', 11, 11)
+    createStructure('workshop', 12, 12)
+    createStructure('windmill', 5, 17)
+    createStructure('willowcut', 9, 17)
+    createStructure('whirlpool', 40, 4)
   }
 
   let width = 12
@@ -121,12 +134,30 @@
     updateViewport()
     window.addEventListener('resize', updateViewport)
 
+    const handleKeydown = (event: KeyboardEvent) => {
+      const movementByKey: Record<string, [number, number]> = {
+        ArrowUp: [0, -1],
+        ArrowDown: [0, 1],
+        ArrowLeft: [-1, 0],
+        ArrowRight: [1, 0],
+      }
+      const movement = movementByKey[event.key]
+
+      if (!movement) return
+
+      event.preventDefault()
+      moveCamera(...movement)
+    }
+
+    window.addEventListener('keydown', handleKeydown)
+
     const resizeObserver = new ResizeObserver(updateViewport)
     if (headerElement) resizeObserver.observe(headerElement)
     if (footerElement) resizeObserver.observe(footerElement)
 
     return () => {
       window.removeEventListener('resize', updateViewport)
+      window.removeEventListener('keydown', handleKeydown)
       resizeObserver.disconnect()
     }
   })
@@ -159,17 +190,17 @@
 
     <footer bind:this={footerElement}>
       <nav aria-label="Управление картой">
-        <button type="button" aria-label="Вверх" onclick={() => moveCamera(0, -1)}>
-          Вверх
+        <button class="direction-up" type="button" aria-label="Вверх" onclick={() => moveCamera(0, -1)}>
+          ↑
         </button>
-        <button type="button" aria-label="Вниз" onclick={() => moveCamera(0, 1)}>
-          Вниз
+        <button class="direction-down" type="button" aria-label="Вниз" onclick={() => moveCamera(0, 1)}>
+          ↓
         </button>
-        <button type="button" aria-label="Влево" onclick={() => moveCamera(-1, 0)}>
-          Влево
+        <button class="direction-left" type="button" aria-label="Влево" onclick={() => moveCamera(-1, 0)}>
+          ←
         </button>
-        <button type="button" aria-label="Вправо" onclick={() => moveCamera(1, 0)}>
-          Вправо
+        <button class="direction-right" type="button" aria-label="Вправо" onclick={() => moveCamera(1, 0)}>
+          →
         </button>
       </nav>
     </footer>
@@ -231,19 +262,40 @@
   }
 
   footer {
-    min-height: 72px;
     padding: 8px 12px;
     border-top: 2px solid #374151;
   }
 
   nav {
     display: grid;
-    grid-template-columns: repeat(4, minmax(64px, 96px));
-    gap: 8px;
+    grid-template-columns: repeat(3, 64px);
+    grid-template-rows: repeat(3, 44px);
+    gap: 6px;
+  }
+
+  .direction-up {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .direction-left {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .direction-right {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  .direction-down {
+    grid-column: 2;
+    grid-row: 3;
   }
 
   button {
-    min-height: 44px;
+    width: 64px;
+    height: 44px;
     border: 1px solid #6b7280;
     border-radius: 6px;
     background: #374151;
@@ -270,18 +322,18 @@
     }
 
     footer {
-      min-height: 64px;
       padding: 6px 8px;
     }
 
     nav {
-      grid-template-columns: repeat(4, minmax(48px, 1fr));
-      width: 100%;
+      grid-template-columns: repeat(3, 56px);
+      grid-template-rows: repeat(3, 48px);
       gap: 4px;
     }
 
     button {
-      min-height: 48px;
+      width: 56px;
+      height: 48px;
       padding: 4px;
       font-size: 0.875rem;
     }
