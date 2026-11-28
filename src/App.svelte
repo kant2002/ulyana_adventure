@@ -5,6 +5,7 @@
     createStructure,
     describeStructures,
     isPositionBlockedByStructure,
+    moveStructure,
   } from './lib/structures'
 
   globalThis.groundMap = mapText.split(/\r?\n/).filter((line) => line.length > 0)
@@ -43,6 +44,7 @@
     
     // Windmill and field
     createWindmillAndField(2, 17)
+    createStructure('boat', 60, 2)
   }
 
   let width = 12
@@ -50,13 +52,14 @@
   let tileSize = 64
   let cameraX = 3
   let cameraY = 3
-  let playerX = 3
-  let playerY = 15
+  let playerX = 55
+  let playerY = 1
   let playerDirection: 'left' | 'right' = 'left'
   let playerWalking = false
   let walkingTimer: ReturnType<typeof setTimeout> | undefined
   let headerElement: HTMLElement
   let footerElement: HTMLElement
+  const impassableTerrainCodes = new Set(['w', 'o', 'd'])
 
   const clamp = (value: number, minimum: number, maximum: number) =>
     Math.min(maximum, Math.max(minimum, value))
@@ -108,9 +111,28 @@
     const mapHeight = groundMap.length
     const nextY = clamp(playerY + vertical, 0, mapHeight - 1)
     const nextX = clamp(playerX + horizontal, 0, (groundMap[nextY]?.length ?? 1) - 1)
+    const currentTerrainCode = groundMap[playerY]?.[playerX] ?? ''
+    const nextTerrainCode = groundMap[nextY]?.[nextX] ?? ''
+    const boatUnderPlayer = (globalThis.globalStructures ?? []).find(
+      (structure) =>
+        structure.code === 'boat' &&
+        structure.x === playerX &&
+        structure.y === playerY,
+    )
+    const boatAtDestination = (globalThis.globalStructures ?? []).find(
+      (structure) =>
+        structure.code === 'boat' &&
+        structure.x === nextX &&
+        structure.y === nextY,
+    )
 
     clearTimeout(walkingTimer)
-    if (isPositionBlockedByStructure(nextX, nextY)) {
+    if (
+      (impassableTerrainCodes.has(nextTerrainCode) &&
+        !boatUnderPlayer &&
+        !boatAtDestination) ||
+      isPositionBlockedByStructure(nextX, nextY)
+    ) {
       playerWalking = false
       return
     }
@@ -125,6 +147,12 @@
       walkingTimer = setTimeout(() => {
         playerWalking = false
       }, 400)
+    }
+
+    const leavingWater = impassableTerrainCodes.has(currentTerrainCode) &&
+      !impassableTerrainCodes.has(nextTerrainCode)
+    if (moved && boatUnderPlayer && !leavingWater) {
+      moveStructure(boatUnderPlayer.id, nextX, nextY)
     }
 
     playerX = nextX

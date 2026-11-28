@@ -286,3 +286,17 @@ export const removeStructure = (id: string) => {
     }),
   )
 }
+
+export const moveStructure = (id: string, x: number, y: number) => {
+  const structures = globalThis.globalStructures ?? []
+  if (!structures.some((structure) => structure.id === id)) return
+
+  globalThis.globalStructures = structures.map((structure) =>
+    structure.id === id ? { ...structure, x, y } : structure
+  )
+  globalThis.dispatchEvent?.(
+    new CustomEvent('structureschange', {
+      detail: globalThis.globalStructures,
+    }),
+  )
+}
