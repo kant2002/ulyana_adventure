@@ -74,6 +74,11 @@
   let tileSize = 64
   let cameraX = 3
   let cameraY = 3
+  let playerX = 3
+  let playerY = 3
+  let playerDirection: 'left' | 'right' = 'left'
+  let playerWalking = false
+  let walkingTimer: ReturnType<typeof setTimeout> | undefined
   let headerElement: HTMLElement
   let footerElement: HTMLElement
 
@@ -114,20 +119,35 @@
     width = Math.min(mapWidth, Math.max(1, Math.floor(mapAvailableWidth / tileSize)))
     height = Math.min(mapHeight, Math.max(1, Math.floor(mapAvailableHeight / tileSize)))
 
-    cameraX = clamp(cameraX, width / 2, mapWidth - width / 2)
-    cameraY = clamp(cameraY, height / 2, mapHeight - height / 2)
+    cameraX = clamp(playerX + 0.5, width / 2, mapWidth - width / 2)
+    cameraY = clamp(playerY + 0.5, height / 2, mapHeight - height / 2)
   }
 
-  const moveCamera = (horizontal: number, vertical: number) => {
+  const movePlayer = (horizontal: number, vertical: number) => {
     const groundMap = globalThis.groundMap ?? []
     const mapWidth = groundMap.reduce(
       (maximum, row) => Math.max(maximum, row.length),
       0,
     )
     const mapHeight = groundMap.length
+    const nextY = clamp(playerY + vertical, 0, mapHeight - 1)
+    const nextX = clamp(playerX + horizontal, 0, (groundMap[nextY]?.length ?? 1) - 1)
 
-    cameraX = clamp(cameraX + horizontal, width / 2, mapWidth - width / 2)
-    cameraY = clamp(cameraY + vertical, height / 2, mapHeight - height / 2)
+    clearTimeout(walkingTimer)
+    if (horizontal !== 0 && nextX !== playerX) {
+      playerDirection = horizontal < 0 ? 'left' : 'right'
+      playerWalking = true
+      walkingTimer = setTimeout(() => {
+        playerWalking = false
+      }, 400)
+    } else {
+      playerWalking = false
+    }
+
+    playerX = nextX
+    playerY = nextY
+    cameraX = clamp(playerX + 0.5, width / 2, mapWidth - width / 2)
+    cameraY = clamp(playerY + 0.5, height / 2, mapHeight - height / 2)
   }
 
   onMount(() => {
@@ -146,7 +166,7 @@
       if (!movement) return
 
       event.preventDefault()
-      moveCamera(...movement)
+      movePlayer(...movement)
     }
 
     window.addEventListener('keydown', handleKeydown)
@@ -158,6 +178,7 @@
     return () => {
       window.removeEventListener('resize', updateViewport)
       window.removeEventListener('keydown', handleKeydown)
+      clearTimeout(walkingTimer)
       resizeObserver.disconnect()
     }
   })
@@ -185,21 +206,32 @@
           height={height}
           tile-size={tileSize}
         ></structures-layer>
+        <personas-layer
+          center-x={cameraX}
+          center-y={cameraY}
+          width={width}
+          height={height}
+          tile-size={tileSize}
+          player-x={playerX}
+          player-y={playerY}
+          direction={playerDirection}
+          walking={playerWalking}
+        ></personas-layer>
       </div>
     </div>
 
     <footer bind:this={footerElement}>
       <nav aria-label="Управление картой">
-        <button class="direction-up" type="button" aria-label="Вверх" onclick={() => moveCamera(0, -1)}>
+        <button class="direction-up" type="button" aria-label="Вверх" onclick={() => movePlayer(0, -1)}>
           ↑
         </button>
-        <button class="direction-down" type="button" aria-label="Вниз" onclick={() => moveCamera(0, 1)}>
+        <button class="direction-down" type="button" aria-label="Вниз" onclick={() => movePlayer(0, 1)}>
           ↓
         </button>
-        <button class="direction-left" type="button" aria-label="Влево" onclick={() => moveCamera(-1, 0)}>
+        <button class="direction-left" type="button" aria-label="Влево" onclick={() => movePlayer(-1, 0)}>
           ←
         </button>
-        <button class="direction-right" type="button" aria-label="Вправо" onclick={() => moveCamera(1, 0)}>
+        <button class="direction-right" type="button" aria-label="Вправо" onclick={() => movePlayer(1, 0)}>
           →
         </button>
       </nav>
@@ -258,6 +290,12 @@
   .map-stack structures-layer {
     position: absolute;
     z-index: 1;
+    inset: 0;
+  }
+
+  .map-stack personas-layer {
+    position: absolute;
+    z-index: 2;
     inset: 0;
   }
 

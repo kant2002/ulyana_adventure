@@ -19,6 +19,8 @@ export default defineConfig({
           '/TerrainMap.svelte',
           '/Structure.svelte',
           '/StructuresLayer.svelte',
+          '/Persona.svelte',
+          '/PersonasLayer.svelte',
         ]
         if (
           customElementNames.some((name) =>
