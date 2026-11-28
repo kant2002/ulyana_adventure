@@ -1,55 +1,13 @@
 <script lang="ts">
   import { onMount } from 'svelte'
+  import mapText from '../assets/scenarios/map.txt?raw'
   import {
     createStructure,
     describeStructures,
     isPositionBlockedByStructure,
   } from './lib/structures'
 
-  globalThis.groundMap = [
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwoooooooooooooddddddddddd',
-    'ggggghhhggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooddddddddd',
-    'ggghhmmhhgggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooodddddddd',
-    'gsspppppssgggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwoooooooooooooooooddddd',
-    'gswwwwwssggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwoooooooooooooooooooddd',
-    'ggwoowwsggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooooooodd',
-    'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooooood',
-    'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooooood',
-    'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooooood',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwoooooooooooooo',
-    'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooooo',
-    'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwooooooooo',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwoooooo',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwoooo',
-    'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwo',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwww',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwww',
-    'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggww',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-    'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-  ]
+  globalThis.groundMap = mapText.split(/\r?\n/).filter((line) => line.length > 0)
 
   describeStructures()
   globalThis.describeStructures = describeStructures
@@ -66,6 +24,11 @@
     createStructure('windmill', x + 6, y + 3)
   }
 
+  function createWorkshop(x, y) {
+    createStructure('workshop', x, y)
+    createStructure('anvil', x + 2, y + 3)
+  }
+
   if ((globalThis.globalStructures?.length ?? 0) === 0) {
     createStructure('appletree', 4, 6)
     createStructure('house', 5, 5)
@@ -74,7 +37,7 @@
     createStructure('appletree', 13, 7)
     createStructure('appletree', 3, 11)
     createStructure('anvil', 22, 11)
-    createStructure('workshop', 12, 12)
+    createWorkshop(12, 12)
     createStructure('willowcut', 9, 17)
     createStructure('whirlpool', 85, 2)
     
