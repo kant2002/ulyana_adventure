@@ -15,3 +15,7 @@ npm run dev
 
 Сборка автоматически использует корневой base path локально и `/ulyana_adventure/`
 при деплое в GitHub Pages через GitHub Actions.
+
+# Атрибуция
+
+[some assets] by CodeSpree, [CC BY-SA 4.0], from Top-down Tiled RPG Assets Pack: https://codespree.itch.io/top-down-tiled-rpg-assets
